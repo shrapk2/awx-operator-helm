@@ -1,0 +1,14 @@
+image:
+  #repository: quay.io/ansible/awx-operator
+  pullPolicy: IfNotPresent
+  #tag: "using .Chart.AppVersion" 
+
+global:
+  annotations:
+    kubernetes.io/ingress.class: istio
+
+network:
+  hostname: awx.example.com
+  service_type: ClusterIP
+  ingress_tls_secret: awx-example-com-tls
+  ingress_type: Ingress

@@ -1,0 +1,24 @@
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  labels:
+      {{- include "awx-operator.labels" . | nindent 4 }}
+  {{- with .Values.global.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  generation: 1
+  name: awx-ingress
+  namespace: {{ .Release.Namespace }}
+spec:
+  gateways:
+  - awx-gateway
+  hosts:
+  - '*'
+  http:
+  - route:
+    - destination:
+        host: awx-service
+        port:
+          number: 80

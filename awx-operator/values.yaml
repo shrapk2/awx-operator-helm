@@ -1,0 +1,4 @@
+image:
+  repository: quay.io/ansible/awx-operator
+  pullPolicy: IfNotPresent
+  #tag: "using .Chart.AppVersion" 

@@ -1,0 +1,19 @@
+---
+apiVersion: awx.ansible.com/v1beta1
+kind: AWX
+metadata:
+  labels:
+      {{- include "awx-operator.labels" . | nindent 4 }}
+  {{- with .Values.global.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  name: awx
+  namespace: {{ .Release.Namespace }}
+spec:
+  create_preload_data: true
+  hostname: {{ .Values.network.hostname }}
+  image_pull_policy: {{ .Values.image.pullPolicy }}
+  service_type: {{ .Values.network.service_type }}
+  ingress_tls_secret: {{ .Values.network.ingress_tls_secret }}
+  ingress_type: {{ .Values.network.ingress_type }}
