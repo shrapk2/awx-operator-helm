@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: "https://github.com/shrapk2/awx-operator-helm"
     path: awx/awx-operator
-    targetRevision: argod-dev
+    targetRevision: argo-dev
   destination:
     server: "https://kubernetes.default.svc"
     namespace: awx
