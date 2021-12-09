@@ -1,0 +1,19 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: awx-operator
+spec:
+  project: default
+  source:
+    repoURL: "https://github.com/shrapk2/awx-operator-helm"
+    path: awx-operator
+    targetRevision: HEAD
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: awx
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
