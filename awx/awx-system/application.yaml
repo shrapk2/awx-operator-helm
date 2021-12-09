@@ -2,17 +2,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: awx-system
-  annotations:
-    argocd.argoproj.io/sync-wave: "1"
+  name: awx
 spec:
   project: default
   source:
     repoURL: "https://github.com/shrapk2/awx-operator-helm"
-    path: awx-system
-    targetRevision: HEAD
-    # directory:
-    #   recurse: true
+    path: awx/
+    targetRevision: argod-dev
+    directory:
+      recurse: true
   destination:
     server: "https://kubernetes.default.svc"
     namespace: awx
