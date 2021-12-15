@@ -15,7 +15,7 @@ spec:
   gateways:
   - awx-gateway
   hosts:
-  - {{ .Values.network.hostname }}
+  - '*'
   http:
   - route:
     - destination:
